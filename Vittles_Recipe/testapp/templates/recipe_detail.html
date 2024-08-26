@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Details</title>
+    <style>
+    img {
+        width: 240px;
+        height: 160px;
+        border-radius: 8px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Recipe Details</h1>
+
+    {% if error %}
+        <p><b>ID:</b> {{ recipe.id }}</p>
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <!-- <p><b>ID:</b> {{ recipe.id }}</p> -->
+        <p><b>Name:</b> {{ recipe.name }}</p>
+        <img src="{{ recipe.image_url }}" alt="{{ recipe.name }}">
+        <p><b>Description:</b> {{ recipe.description }}</p>
+        <p><b>Cuisine:</b> {{ recipe.cuisine }}</p>
+        <p><b>Course:</b> {{ recipe.course }}</p>
+        <p><b>Diet:</b> {{ recipe.diet }}</p>
+        <p><b>Ingredients:</b> {{ recipe.ingredients_name }}</p>
+        <p><b>Ingredients Quantity:</b> {{ recipe.ingredients_quantity }}</p>
+        <p><b>Prep Time (mins):</b> {{ recipe.prep_time }}</p>
+        <p><b>Cook Time (mins):</b> {{ recipe.cook_time }}</p>
+        <p><b>Instructions:</b> {{ recipe.instructions }}</p>
+        <!-- <p><b>Image URL:</b> <a href="{{ recipe.image_url }}">{{ recipe.image_url }}</a></p> -->
+        <p><b>Rating:</b> {{ recipe.rating }}</p>
+    {% endif %}
+
+</body>
+</html>

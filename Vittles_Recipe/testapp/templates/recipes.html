@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipes</title>
+    <style>
+        .header-container {
+            width: 160px;
+            height: fit-content;
+            background-color: #222;
+            text-align: center;
+            padding: 20px;
+            margin: 20px auto;
+            align-self: center;
+            border-radius: 20px;
+        }
+
+        .recipe-container {
+            display:grid;
+            /* grid-template-columns: repeat(auto-fit, minmax(254px, 254px)); */
+            grid-template-columns: auto auto auto auto;
+            justify-content: center;
+            background-color: #f2f2f2; /* Light gray background */
+            padding: 20px;
+            margin: 0px 30px;
+            border-radius: 10px;
+        }
+
+        .recipe-thumbnail {
+            width: 250px;
+            height: 300px;
+            margin: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #222; /* White background for thumbnails */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            width: 100%;
+            height: 160px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ddd;
+        }
+
+        p {
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>Vittles</h1>
+    </div>
+    <div class="recipe-container">
+        {% for recipe in recipes %}
+        <div class="recipe-thumbnail" onclick="redirectToRecipeDetail({{ recipe.id }})">
+            <img src="{{ recipe.image_url }}" alt="{{ recipe.name }}">
+            <p>{{ recipe.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <script>  
+        function redirectToRecipeDetail(recipeId) {
+            // Construct the URL using template literal and string concatenation
+            const recipeDetailUrl = `/testapp/recipes/${recipeId}/`;
+            window.location.href = recipeDetailUrl;
+        }
+    </script>
+</body>
+</html>
